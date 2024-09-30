@@ -1,0 +1,41 @@
+# Enable the RewriteEngine
+RewriteEngine On
+
+# Set the base URL path for rewriting
+RewriteBase /bahedü/
+
+# HTTP to HTTPS redirection
+# Uncomment the lines below to enforce HTTPS
+# RewriteCond %{HTTPS} !=on
+# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Non-www to www redirection
+# Uncomment the lines below to enforce www
+# RewriteCond %{HTTP_HOST} !^www\.
+# RewriteRule ^ https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Basic URL rewrites
+RewriteRule ^hakkimizda/?$ about.php [NC,L]
+RewriteRule ^anasayfa/?$ index.php [NC,L]
+RewriteRule ^kurslarım/?$ kurs.php [NC,L]
+RewriteRule ^egitim/?$ eğitim.php [NC,L]
+RewriteRule ^sinav/?$ sınav.php [NC,L]
+RewriteRule ^sonuc/?$ sonuc.php [NC,L]
+RewriteRule ^kullanicilar/?$ user.php [NC,L]
+RewriteRule ^egitimekle/?$ egitim_ekle.php [NC,L]
+RewriteRule ^sinavekle/?$ sınav_ekle.php [NC,L]
+RewriteRule ^sinavcoz/?$ sınav_coz.php [NC,L]
+RewriteRule ^sinavtamamlandi/?$ sınav_tamamlandi.php [NC,L]
+
+# Detailed pages redirection with numeric ID and optional SEO-friendly link
+RewriteRule ^yeni-egitim/([0-9]+)/([^/]+)$ egitim_detay.php?id=$1&sef_link=$2 [L,QSA]
+RewriteRule ^kurs-detay/([0-9]+)/([^/]+)$ kurs_detay.php?id=$1&sef_link=$2 [L,QSA]
+RewriteRule ^sinav-coz/([0-9]+)/([^/]+)$ sınav_coz.php?id=$1&sef_link=$2 [L,QSA]
+RewriteRule ^sinav-gir/([0-9]+)/([^/]+)$ sınav-gir.php?id=$1&sef_link=$2 [L,QSA]
+RewriteRule ^sinav-detay/([0-9]+)/([^/]+)$ sınavdetay.php?id=$1&sef_link=$2 [L,QSA]
+RewriteRule ^yeni-sinav/([0-9]+)/([^/]+)$ sınav_ekle.php?id=$1&sef_link=$2 [L,QSA]
+
+
+
+# Redirects for blog and services with ID and category name
+RewriteRule ^new-blog/([^/]+)/([^/]+)$ ürünler_detay.php?id=$1&sef_link=$2 [L,QSA]
