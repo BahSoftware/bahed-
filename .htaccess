@@ -2,7 +2,7 @@
 RewriteEngine On
 
 # Set the base URL path for rewriting
-RewriteBase /bahedü/
+RewriteBase /bahedu/
 
 # HTTP to HTTPS redirection
 # Uncomment the lines below to enforce HTTPS
